@@ -1,0 +1,5 @@
+.g8/
+.gradle/
+.idea/
+.ivy2/
+.sbt/

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    tty: true
+    image: hseeberger/scala-sbt:8u151-2.12.4-1.1.0
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/root
+    links:
+      - db
+    command: sbt run
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: todo
